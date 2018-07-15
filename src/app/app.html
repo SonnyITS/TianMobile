@@ -1,10 +1,36 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" [swipeEnabled]="false">
+
+    <ion-header>
+        <ion-toolbar>
+
+            <ion-title>Location</ion-title>
+
+            <ion-buttons end>
+                <button ion-button (click)="openLocationAlert()">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+            </ion-buttons>
+
+        </ion-toolbar>
+    </ion-header>
+
 
     <ion-content padding>
-        <h4>This is Test</h4>
+        <ion-list>
+
+            <ion-item-sliding *ngFor="let Location of Locations">
+              <ion-item>{{Location}}</ion-item>
+              <ion-item-options side="right">
+                <button color="danger" ion-button>
+                  <ion-icon name="trash" ></ion-icon>
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+        
+          </ion-list>
     </ion-content>
 
 </ion-menu>
 
 
-<ion-nav [root]="rootPage" #content></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
