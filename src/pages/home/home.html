@@ -19,7 +19,18 @@
 
 
 
-<ion-content padding>
+<ion-content padding class='home'>
+  {{weather | json}}
+
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-left>
+          <img src="http://openweathermap.org/img/w/10d.png">
+      </ion-thumbnail>
+      
+    </ion-item>
+  </ion-list>
+
 
   <h2>Welcome to Ionic!</h2>
   <p>
