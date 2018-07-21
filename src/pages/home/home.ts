@@ -12,25 +12,43 @@ export class HomePage {
   
   location:{
     city: string,
-    state: string
+    state: string,
+    lat: string,
+    lon: string
   }
 
   constructor(public navCtrl: NavController, private weatherProvider: WeatherProvider) {
 
   }
 
-
-
   ionViewWillEnter(){
     this.location = {
       city: 'Hartford',
-      state: "US"
+      state: "US",
+      lat: '41.7658',
+      lon: '-72.6734'
     }
 
-    this.weatherProvider.getWeather(this.location.city, this.location.state).subscribe(weather => {
+    
+    this.weatherProvider.getOWMWeather(this.location.city, this.location.state).subscribe(weather => {
       console.log(weather);
       this.weather = weather;
+      ///console.log(weather["main"]["temp"] + " F");
     })
+    
+
+    /*
+    this.weatherProvider.getDSWeather(this.location.lat, this.location.lon).subscribe(weather => {
+      console.log(weather);
+      ///this.weather = weather;
+      ///console.log(weather["main"]["temp"] + " F");
+    })
+    */
+
+  }
+
+  getFTemp(num){
+    return ((num * (9/5)) - 459.67).toPrecision(3);
   }
 
   
