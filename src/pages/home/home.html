@@ -3,7 +3,7 @@
 
     <!--Navbar properties for home page-->
 
-    <ion-title>Home</ion-title>
+    <ion-title>Tian</ion-title>
 
     <!--Side menu toggle button in navbar for home page
     menu config is in app folder
@@ -24,26 +24,29 @@
   <ion-grid *ngIf = "weather">
     <ion-row>
       <ion-col width-50 offset-25>
-        <h2 class="location"> {{weather.name}} </h2>
-        <div class="icon"> <img src='http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png'> </div>
-        <h3 class="desc"> {{weather.weather[0].main}} </h3>
-        <h1 class="temp"> {{this.getFTemp(weather.main.temp)}} </h1>
+        <h2 class="location"> {{this.getLocation()}} </h2>
+        <div class="icon"> <img src= 'http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png'> </div>
+        <h3 class="desc"> {{this.getDescription()}} </h3>
+        <h1 class="temp"> {{this.getTemp()}}&deg; </h1>
       </ion-col>
     </ion-row>    
     <ion-row>
       <ion-col width-100>
         <ion-list>
           <ion-item>
-            <strong>High Temp: </strong> {{this.getFTemp(weather.main.temp_max)}}
+            <strong>High Temp: </strong> {{this.getHighTemp()}}&deg;
           </ion-item>
           <ion-item>
-              <strong>High Temp: </strong> {{this.getFTemp(weather.main.temp_max)}}
+              <strong>Low Temp: </strong> {{this.getLowTemp()}}&deg;
+          </ion-item>
+          <ion-item> 
+              <strong> Wind </strong> {{this.getWind()}}
           </ion-item>
           <ion-item>
-              <strong>High Temp: </strong> {{this.getFTemp(weather.main.temp_max)}}
+              <strong>Relative Humidity: </strong> {{this.getHumidity()}}%
           </ion-item>
           <ion-item>
-              <strong>High Temp: </strong> {{this.getFTemp(weather.main.temp_max)}}
+              <strong>Pressure: </strong> {{this.getPressure()}} hPa
           </ion-item>
         </ion-list>
       </ion-col>
