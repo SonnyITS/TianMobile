@@ -42,11 +42,7 @@ export class HomePage {
       })
       
     })
-
     
-    
-    
-
     /*
     this.weatherProvider.getDSWeather(this.location.lat, this.location.lon).subscribe(weather => {
       console.log(weather);
@@ -58,36 +54,72 @@ export class HomePage {
   }
 
   getTemp(){
+    if (this.weather.main.temp == null){
+      return 'data not found in API response';
+    }
+
     return this.convITemp(this.weather.main.temp);
   }
 
   getHighTemp(){
+    if (this.weather.main.temp_max == null){
+      return 'data not found in API response';
+    }
+
     return this.convITemp(this.weather.main.temp_max);
   }
 
   getLowTemp(){
+    if (this.weather.main.temp_min == null){
+      return 'data not found in API response';
+    }
+
     return this.convITemp(this.weather.main.temp_min);
   }
 
   getLocation(){
+    if (this.weather.name == null){
+      return 'data not found in API response';
+    }
+
     return this.weather.name;
   }
 
   getDescription(){
+    if (this.weather.weather[0].description == null){
+      return 'data not found in API response';
+    }
+
     return this.weather.weather[0].description;
   }
 
   getHumidity(){
+    if (this.weather.main.humidity == null){
+      return 'data not found in API response';
+    }
+
     return this.weather.main.humidity;
   }
 
   getPressure(){
+    if (this.weather.main.pressure == null){
+      return 'data not found in API response';
+    }
+
     return this.weather.main.pressure;
   }
 
   getWind(){
+    if (this.weather.wind.speed == null){
+      return 'data not found in API response';
+    }
+    if (this.weather.wind.deg == null){
+      return 'data not found in API response';
+    }
+
     return this.convISpeed(this.weather.wind.speed)
-    + ' (' + (this.weather.wind.deg).toPrecision(3) + ' deg)';
+    + ' (' + (this.weather.wind.deg).toPrecision(3)
+    + ' deg)';
   }
 
 
